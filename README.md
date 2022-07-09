@@ -1,5 +1,6 @@
 # vuehello
-
+### Projeto voltado para estudos de como utilizar o framework: Vue, seus componentes, estruturação e afins.
+#### Inicio de um projeto relacionado a criar tarefas e cronometrá-las, definindo assim um tempo para cada tarefa definida como 'resolvida'.
 ## Project setup
 ```
 npm install

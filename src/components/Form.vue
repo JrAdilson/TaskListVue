@@ -17,15 +17,15 @@
           class="is-flex is-align-items-center is-justify-content-space-between"
         >
           <section>
-            <b>00:00:00</b>
+            <b>{{tempoDec}}</b>
           </section>
-          <button class="button">
+          <button class="button" @click="iniciar">
             <span class="icon">
               <i class="fas fa-play"></i>
             </span>
             <span>play</span>
           </button>
-          <button class="button">
+          <button class="button" @click="final">
             <span class="icon">
               <i class="fas fa-stop"></i>
             </span>
@@ -41,6 +41,30 @@
 import { defineComponent } from "vue";
 export default defineComponent({
   name: "FormHo",
+  data(){
+    return{
+      tempoSec: 0,
+      cron: 0
+    }
+  },
+  computed:{
+    tempoDec(){
+      return new Date(this.tempoSec * 1000).toISOString().substr(11, 8)
+    }
+  },
+  methods: {
+    iniciar(){
+      /* Começa a contagem do cronometro
+      contagem realizada por segundos 
+      1 seg = 1000 mili */
+      this.cron = setInterval(() => {
+        this.tempoSec += 1
+      }, 1000)
+    },
+    final(){
+      clearInterval(this.cron)
+    }
+  }
 });
 </script>
 
