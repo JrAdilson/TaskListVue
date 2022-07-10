@@ -25,6 +25,7 @@ import { defineComponent } from "vue";
 import TemporiZador from "./Temp.vue";
 export default defineComponent({
   name: "FormHo",
+  emits: ['toSaveTask'],
   components: {
     TemporiZador
   },
@@ -35,8 +36,10 @@ export default defineComponent({
   },
   methods: {
     finTask(tempoDec: number) : void{
-      console.log('a',tempoDec)
-      console.log('desc da task', this.descTask)
+      this.$emit('toSaveTask', {
+        tempoSec: tempoDec,
+        descTask: this.descTask
+      })
       this.descTask = ''
     }
   }
