@@ -10,10 +10,11 @@
           type="text"
           class="input"
           placeholder="Descrição da tarefa a se iniciar"
+          v-model="descTask"
         />
       </div>
       <div class="column">
-        <TemporiZador/>
+        <TemporiZador @tempFinal="finTask"/>
       </div>
     </div>
   </div>
@@ -26,6 +27,18 @@ export default defineComponent({
   name: "FormHo",
   components: {
     TemporiZador
+  },
+  data(){
+    return {
+      descTask: ''
+    }
+  },
+  methods: {
+    finTask(tempoDec: number) : void{
+      console.log('a',tempoDec)
+      console.log('desc da task', this.descTask)
+      this.descTask = ''
+    }
   }
 });
 </script>
