@@ -1,6 +1,6 @@
 <template>
   <section>
-    <b>{{tempoDec}}</b>
+    <b class="disp">{{tempoDec}}</b>
   </section>
 </template>
 
@@ -23,4 +23,7 @@ export default defineComponent({
 </script>
 
 <style>
+.display{
+  color: var(--text-primary);
+}
 </style>
