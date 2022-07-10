@@ -5,6 +5,12 @@
     </div>
     <div class="column is-three-quarter">
       <Form/>
+      <div class="lista">
+        <TasK/>
+        <TasK/>
+        <TasK/>
+        <TasK/>
+      </div>
     </div>
   </main>
 </template>
@@ -13,11 +19,13 @@
 import { defineComponent } from 'vue';
 import Lateral from "@/components/Lateral.vue"
 import Form from "@/components/Form.vue"
+import TasK from "@/components/Task.vue"
 export default defineComponent({
   name: 'App',
   components: {
     Lateral,
-    Form
+    Form,
+    TasK
   }
 });
 </script>
