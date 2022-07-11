@@ -6,6 +6,22 @@
     <button class="button" style="text-align: center; margin-left: 155px" @click="altMode">
       {{textButton}}
     </button>
+    <nav class="panel mt-5">
+      <ul>
+        <li>
+          <router-link to="/" class="link">
+            <i class="fas fa-tasks"></i>
+            Tarefas
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/projetos" class="link">
+            <i class="fas fa-project-diagram"></i>
+            Projetos
+          </router-link>
+        </li>
+      </ul>
+    </nav>
   </header>
 </template>
 
@@ -52,5 +68,17 @@ img {
     padding: 2.5rem;
     height: auto;
   }
+}
+.panel li{
+  margin: 8px 0;
+}
+.link{
+  color: #fff;
+}
+.link:hover{
+  color: #FAF0CA;
+}
+.link.router-link-active{
+  color: #FAF0CA
 }
 </style>
