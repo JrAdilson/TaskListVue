@@ -1,7 +1,7 @@
 # vuehello
 ### Projeto voltado para estudos de como utilizar o framework: Vue, seus componentes, estruturação e afins.
-#### Projeto relacionado a criar tarefas e cronometrá-las, definindo assim um tempo para cada tarefa definida como 'resolvida'.
-##### Neste projeto, foi utilizado a biblioteca 'bulma' para utilizar o CSS.
+#### Projeto relacionado a criar tarefas e cronometrá-las, definindo assim um tempo para cada tarefa definida como 'resolvida'. 
+##### Neste projeto, foi utilizado a biblioteca 'Bulma' para facilitar o uso do CSS.
 ## Project setup
 ```
 npm install

@@ -34,7 +34,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import IProject from "../interfaces/Project";
+import IProject from "../interfaces/IProject";
 export default defineComponent({
   name: "ProjectS",
   data() {
@@ -58,5 +58,8 @@ export default defineComponent({
 <style scoped>
 .projetos {
   padding: 1.25rem;
+}
+.table{
+  margin-top: 35px;
 }
 </style>
