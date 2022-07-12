@@ -1,7 +1,7 @@
 import IProject from "@/interfaces/IProject";
 import { InjectionKey } from "vue";
 import { createStore, Store, useStore as vuexUseStore } from "vuex";
-
+import { ADD_PROJECT, ALTER_PROJECT, DEL_PROJECT } from "./typemut";
 interface State {
   projetos: IProject[];
 }
@@ -11,18 +11,18 @@ export const store = createStore<State>({
     projetos: []
   },
   mutations: {
-    'ADD_PROJECT'(state, nomeDoProjeto: string){
+    [ADD_PROJECT](state, nomeDoProjeto: string){
       const project = {
         id: new Date().toISOString(),
         nome: nomeDoProjeto
       } as IProject
       state.projetos.push(project)
     },
-    'ALTER_PROJECT'(state, projeto: IProject){
+    [ALTER_PROJECT](state, projeto: IProject){
       const index = state.projetos.findIndex(proj => proj.id == projeto.id)
       state.projetos[index] = projeto
     },
-    'DEL_PROJECT'(state, id: string){
+    [DEL_PROJECT](state, id: string){
       state.projetos = state.projetos.filter(proj => proj.id != id)
     }
   }

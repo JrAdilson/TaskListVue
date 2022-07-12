@@ -39,11 +39,12 @@
 <script lang="ts">
 import { useStore } from "@/store";
 import { computed, defineComponent } from "vue";
+import { DEL_PROJECT } from "@/store/typemut";
 export default defineComponent({
   name: "LisT",
   methods: {
   excluir(id: string) {
-      this.store.commit("DEL_PROJECT", id);
+      this.store.commit(DEL_PROJECT, id);
     },
   },
   setup() {

@@ -20,6 +20,7 @@
 <script lang="ts">
 import {useStore} from "@/store";
 import { defineComponent } from "vue";
+import { ADD_PROJECT, ALTER_PROJECT } from "@/store/typemut";
 export default defineComponent({
   name: "ForM",
   props: {
@@ -41,12 +42,12 @@ export default defineComponent({
   methods: {
     salvar() {
       if(this.id){
-        this.store.commit('ALTER_PROJECT', {
+        this.store.commit(ALTER_PROJECT, {
             id: this.id,
             nome: this.nomeDoProjeto
         })
       }else{
-      this.store.commit('ADD_PROJECT', this.nomeDoProjeto)
+      this.store.commit(ADD_PROJECT, this.nomeDoProjeto)
       }
       this.nomeDoProjeto = "";
       this.$router.push('/projetos')
