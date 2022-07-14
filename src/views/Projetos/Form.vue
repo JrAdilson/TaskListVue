@@ -20,8 +20,9 @@
 <script lang="ts">
 import {useStore} from "@/store";
 import { defineComponent } from "vue";
-import { ADD_PROJECT, ALTER_PROJECT, NOTIFY} from "@/store/typemut";
+import { ADD_PROJECT, ALTER_PROJECT} from "@/store/typemut";
 import { TypeNotify } from "@/interfaces/INotify"
+import { notifyMixins} from "@/mixins/notificar"
 export default defineComponent({
   name: "ForM",
   props: {
@@ -29,6 +30,7 @@ export default defineComponent({
         type: String
     }
   },
+  mixins: [notifyMixins],
   mounted(){
     if(this.id){
         const projeto = this.store.state.projetos.find(proj => proj.id == this.id)
@@ -51,11 +53,7 @@ export default defineComponent({
       this.store.commit(ADD_PROJECT, this.nomeDoProjeto)
       }
       this.nomeDoProjeto = "";
-      this.store.commit(NOTIFY,{
-        title: 'Projeto salvo corretamente',
-        text: 'Projeto disponível para uso.',
-        type: TypeNotify.SUCCESS
-      })
+      this.notificar(TypeNotify.SUCCESS, 'Excelente!', 'O projeto foi cadastrado com sucesso')
       this.$router.push('/projetos')
     },
   },
