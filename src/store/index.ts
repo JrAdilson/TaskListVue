@@ -1,14 +1,36 @@
+import { INotify, TypeNotify } from "@/interfaces/INotify";
 import IProject from "@/interfaces/IProject";
 import { InjectionKey } from "vue";
 import { createStore, Store, useStore as vuexUseStore } from "vuex";
 import { ADD_PROJECT, ALTER_PROJECT, DEL_PROJECT } from "./typemut";
 interface State {
   projetos: IProject[];
+  notify: INotify[];
 }
 export const key: InjectionKey<Store<State>> = Symbol()
 export const store = createStore<State>({
   state: {
-    projetos: []
+    projetos: [],
+    notify:[
+      {
+        id: 1,
+        text: 'Success notify',
+        title: 'Success',
+        type: TypeNotify.SUCCESS
+      },
+      {
+        id: 2,
+        text: 'Fail notify',
+        title: 'Fail',
+        type: TypeNotify.FAIL
+      },
+      {
+        id: 3,
+        text: 'Attention notify',
+        title: 'Attention',
+        type: TypeNotify.ATTENTION
+      },
+    ]
   },
   mutations: {
     [ADD_PROJECT](state, nomeDoProjeto: string){

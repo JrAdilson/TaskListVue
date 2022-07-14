@@ -4,6 +4,7 @@
       <Lateral @toAlterMode="alterMode"/>
     </div>
     <div class="column is-three-quarter cont">
+      <Notify/>
       <!-- View ref: Tasks -->
       <router-view></router-view> 
     </div>
@@ -13,10 +14,12 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import Lateral from "@/components/Lateral.vue";
+import Notify from "@/components/Notify.vue";
 export default defineComponent({
   name: "App",
   components: {
-    Lateral
+    Lateral,
+    Notify
   },
   data() {
     return {
