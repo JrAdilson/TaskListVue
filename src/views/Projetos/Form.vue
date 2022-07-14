@@ -20,7 +20,8 @@
 <script lang="ts">
 import {useStore} from "@/store";
 import { defineComponent } from "vue";
-import { ADD_PROJECT, ALTER_PROJECT } from "@/store/typemut";
+import { ADD_PROJECT, ALTER_PROJECT, NOTIFY} from "@/store/typemut";
+import { TypeNotify } from "@/interfaces/INotify"
 export default defineComponent({
   name: "ForM",
   props: {
@@ -50,6 +51,11 @@ export default defineComponent({
       this.store.commit(ADD_PROJECT, this.nomeDoProjeto)
       }
       this.nomeDoProjeto = "";
+      this.store.commit(NOTIFY,{
+        title: 'Projeto salvo corretamente',
+        text: 'Projeto disponível para uso.',
+        type: TypeNotify.SUCCESS
+      })
       this.$router.push('/projetos')
     },
   },
