@@ -1,8 +1,11 @@
 <template>
     <BoX>
         <div class="columns">
-            <div class="column is-7">
+            <div class="column is-4">
                 {{task.descTask || 'Task with no description'}}
+            </div>
+            <div class="column is-3">
+                {{task.projeto?.nome || 'N/D'}}
             </div>
             <div class="column">
                 <CronomeTro :tempoSec="task.tempoSec"/>
