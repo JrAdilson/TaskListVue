@@ -40,6 +40,7 @@
 import { useStore } from "@/store";
 import { computed, defineComponent } from "vue";
 import { DEL_PROJECT } from "@/store/typemut";
+import { GET_PROJECTS } from "@/store/typactions";
 export default defineComponent({
   name: "LisT",
   methods: {
@@ -49,6 +50,7 @@ export default defineComponent({
   },
   setup() {
     const store = useStore();
+    store.dispatch(GET_PROJECTS)
     return {
       projetos: computed(() => store.state.projetos),
       store

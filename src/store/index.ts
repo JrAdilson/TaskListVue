@@ -2,7 +2,9 @@ import { INotify } from "@/interfaces/INotify";
 import IProject from "@/interfaces/IProject";
 import { InjectionKey } from "vue";
 import { createStore, Store, useStore as vuexUseStore } from "vuex";
-import { ADD_PROJECT, ALTER_PROJECT, DEL_PROJECT, NOTIFY } from "./typemut";
+import { ADD_PROJECT, ALTER_PROJECT, DEL_PROJECT, NOTIFY, DEF_PROJECT} from "./typemut";
+import { GET_PROJECTS } from "./typactions";
+import http from "@/http";
 interface State {
   projetos: IProject[];
   notify: INotify[];
@@ -28,12 +30,21 @@ export const store = createStore<State>({
     [DEL_PROJECT](state, id: string){
       state.projetos = state.projetos.filter(proj => proj.id != id)
     },
+    [DEF_PROJECT](state, projetos: IProject[]){
+      state.projetos = projetos
+    },
     [NOTIFY](state, newNotify: INotify){
       newNotify.id = new Date().getTime()
       state.notify.push(newNotify)
       setTimeout(() => {
         state.notify = state.notify.filter(notifys => notifys.id != newNotify.id)
       }, 2000)
+    }
+  },
+  actions: {
+    [GET_PROJECTS] ({ commit }){
+      http.get('projetos')
+        .then(res => commit(DEF_PROJECT, res.data))
     }
   }
 });
