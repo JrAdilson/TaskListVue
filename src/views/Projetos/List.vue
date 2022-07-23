@@ -39,13 +39,12 @@
 <script lang="ts">
 import { useStore } from "@/store";
 import { computed, defineComponent } from "vue";
-import { DEL_PROJECT } from "@/store/typemut";
-import { GET_PROJECTS } from "@/store/typactions";
+import { GET_PROJECTS, DELETE_PROJECTS } from "@/store/typactions";
 export default defineComponent({
   name: "LisT",
   methods: {
   excluir(id: string) {
-      this.store.commit(DEL_PROJECT, id);
+      this.store.dispatch(DELETE_PROJECTS, id);
     },
   },
   setup() {
