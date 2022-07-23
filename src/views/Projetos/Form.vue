@@ -20,9 +20,11 @@
 <script lang="ts">
 import {useStore} from "@/store";
 import { defineComponent } from "vue";
-import { ADD_PROJECT, ALTER_PROJECT} from "@/store/typemut";
+import { ALTER_PROJECT} from "@/store/typemut";
 import { TypeNotify } from "@/interfaces/INotify"
 import useNotificador from "@/hooks/notificador"
+import { POST_PROJECTS } from "@/store/typactions"
+
 export default defineComponent({
   name: "ForM",
   props: {
@@ -50,7 +52,7 @@ export default defineComponent({
             nome: this.nomeDoProjeto
         })
       }else{
-      this.store.commit(ADD_PROJECT, this.nomeDoProjeto)
+      this.store.dispatch(POST_PROJECTS, this.nomeDoProjeto)
       }
       this.nomeDoProjeto = "";
       this.notificar(TypeNotify.SUCCESS, 'Excelente!', 'O projeto foi cadastrado com sucesso')

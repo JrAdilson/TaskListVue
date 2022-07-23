@@ -3,7 +3,7 @@ import IProject from "@/interfaces/IProject";
 import { InjectionKey } from "vue";
 import { createStore, Store, useStore as vuexUseStore } from "vuex";
 import { ADD_PROJECT, ALTER_PROJECT, DEL_PROJECT, NOTIFY, DEF_PROJECT} from "./typemut";
-import { GET_PROJECTS } from "./typactions";
+import { GET_PROJECTS, POST_PROJECTS } from "./typactions";
 import http from "@/http";
 interface State {
   projetos: IProject[];
@@ -45,6 +45,11 @@ export const store = createStore<State>({
     [GET_PROJECTS] ({ commit }){
       http.get('projetos')
         .then(res => commit(DEF_PROJECT, res.data))
+    },
+    [POST_PROJECTS] (contexto, nomeDoProjeto: string){
+      http.post('/projetos', {
+        nome: nomeDoProjeto
+      })
     }
   }
 });
